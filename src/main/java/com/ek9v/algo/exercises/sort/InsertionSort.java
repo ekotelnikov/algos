@@ -60,11 +60,6 @@ public class InsertionSort {
     }
 
     private static void printArray(int[] ar) {
-//        for(int n: ar){
-//            System.out.print(n+" ");
-//        }
-//        System.out.println("");
-
         StdDraw.clear();
         for (int i = 0; i < ar.length; i++) {
             double y = (ar[i] * unitY) + 0.2;
@@ -72,6 +67,6 @@ public class InsertionSort {
             StdDraw.filledRectangle(x, y / 2., 0.4 * unitX, y / 2.);
         }
         StdDraw.show();
-//        StdDraw.pause(1000 / ar.length);
+        StdDraw.pause(100);
     }
 }
