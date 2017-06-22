@@ -15,6 +15,67 @@ import static org.junit.Assert.assertThat;
  */
 public class QueueTest {
 
+	/* Return reference of new head of the reverse linked list*/
+/* Return reference of new head of the reverse linked list*/
+class Node {
+		int value;
+		Node next;
+
+		Node(int value) {
+			this.value = value;
+		}
+	}
+	class gfg {
+
+		Stack s = new Stack();
+		// This function should reverse linked list and return
+		// head of the modified linked list.
+		Node reverse(Node head) {
+			while (head.next != null) {
+				s.push(head);
+			}
+			Node h = s.pop();
+			Node t = h;
+			while (!s.empty()) {
+				t.next = s.pop();
+				t = t.next;
+			}
+			return h;
+		}
+
+		class Stack {
+
+			private Node first;
+
+			private int n;
+
+			public void push(Node node) {
+				Node oldFirst = first;
+				first = new Node(node.value);
+				first.next = oldFirst;
+				n++;
+			}
+
+			public Node pop() {
+				if (empty()) {
+					//throw new NoSuchElementException("StackLinkedList is empty!");
+				}
+				Node node = first;
+				first = first.next;
+				n--;
+				return node;
+			}
+
+			public int getSize() {
+				return n;
+			}
+
+			public boolean empty() {
+				return n == 0;
+			}
+
+		}
+	}
 	@Rule public ExpectedException expectedException = ExpectedException.none();
 	private Queue<Integer> queue;
 
