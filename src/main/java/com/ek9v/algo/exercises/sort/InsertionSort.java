@@ -50,12 +50,14 @@ public class InsertionSort {
 
     public static void insertionSortPart2(int[] ar) {
         for (int i = 1; i < ar.length; i++) {
-            for (int j = i; j > 0 && ar[j-1] > ar[j]; j--) {
-                int tmp = ar[j-1];
-                ar[j-1] = ar[j];
-                ar[j] = tmp;
-                printArray(ar);
+            int tmp = ar[i];
+            int j = i;
+            while (j > 0 && ar[j-1] > tmp) {
+                ar[j] = ar[j-1];
+                j--;
             }
+            ar[j] = tmp;
+            printArray(ar);
         }
     }
 
