@@ -1,13 +1,13 @@
-package com.ek9v.algo.exercises;
+package com.ek9v.algo.adt;
 
 /**
  * Created by user on 15.01.2017.
  */
-public class TreeBST {
+public class RecursiveTreeBST {
 
 	private Node root;
 
-	public TreeBST(int rootValue) {
+	public RecursiveTreeBST(int rootValue) {
 		root = new Node(rootValue);
 	}
 
@@ -28,12 +28,12 @@ public class TreeBST {
 		return node;
 	}
 
-	public static TreeBST valueOf(int[] values) {
+	public static RecursiveTreeBST valueOf(int[] values) {
 		if (values.length == 0) {
 			return null;
 		}
 		int r = 0;
-		TreeBST t = new TreeBST(values[r]);
+		RecursiveTreeBST t = new RecursiveTreeBST(values[r]);
 		for (int i = 1; i < values.length; i++) {
 			int value = values[i];
 			t.add(value);

@@ -1,5 +1,7 @@
 package com.ek9v.algo;
 
+import com.ek9v.algo.adt.Queue;
+import com.ek9v.algo.adt.QueueArray;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,7 +1,5 @@
 package com.ek9v.algo.exercises.graph;
 
-import com.ek9v.algo.exercises.TreeBST;
-
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;

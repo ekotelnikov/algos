@@ -1,6 +1,6 @@
 package com.ek9v.algo.tests;
 
-import com.ek9v.algo.QueueLinkedList;
+import com.ek9v.algo.adt.QueueLinkedList;
 
 /**
  * Created by user on 24.12.2016.

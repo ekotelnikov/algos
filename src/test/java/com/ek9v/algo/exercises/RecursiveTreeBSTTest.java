@@ -1,16 +1,15 @@
 package com.ek9v.algo.exercises;
 
+import com.ek9v.algo.adt.RecursiveTreeBST;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.TreeSet;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by user on 15.01.2017.
  */
-public class TreeBSTTest {
+public class RecursiveTreeBSTTest {
 	@Test
 	public void add() throws Exception {
 		TreeSet s = new TreeSet();
@@ -19,7 +18,7 @@ public class TreeBSTTest {
 
 		System.out.println(Arrays.binarySearch(a, 0));
 
-		TreeBST bst = TreeBST.valueOf(a);
+		RecursiveTreeBST bst = RecursiveTreeBST.valueOf(a);
 
 		bst.print();
 		System.out.println(bst.distance(3));

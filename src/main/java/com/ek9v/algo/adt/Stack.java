@@ -1,4 +1,4 @@
-package com.ek9v.algo;
+package com.ek9v.algo.adt;
 
 /**
  * Created by user on 25.12.2016.

@@ -1,6 +1,6 @@
 package com.ek9v.algo.tests;
 
-import com.ek9v.algo.FixedCapacityStack;
+import com.ek9v.algo.adt.FixedCapacityStack;
 
 /**
  * Created by user on 24.12.2016.

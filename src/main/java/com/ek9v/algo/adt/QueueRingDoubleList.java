@@ -1,4 +1,4 @@
-package com.ek9v.algo;
+package com.ek9v.algo.adt;
 
 import java.util.NoSuchElementException;
 

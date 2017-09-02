@@ -1,4 +1,6 @@
-package com.ek9v.algo;
+package com.ek9v.algo.adt;
+
+import com.ek9v.algo.adt.Stack;
 
 import java.util.Iterator;
 

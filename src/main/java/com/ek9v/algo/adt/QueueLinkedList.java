@@ -1,51 +1,37 @@
-package com.ek9v.algo;
+package com.ek9v.algo.adt;
 
 import java.util.NoSuchElementException;
 
 /**
  * Created by user on 25.12.2016.
  */
-public class QueueRingLinkedList<T> implements Queue<T> {
+public class QueueLinkedList<T> implements Queue<T> {
 
+	private Node<T> first;
 	private Node<T> last;
 
 	private int n;
 
 	@Override
 	public void enqueue(T value) {
+		Node oldLast = last;
+		last = new Node<>(value, null);
 		if (isEmpty()) {
-			last = new Node<>(value, null);
-			last.next = last;
+			first = last;
 		} else {
-			Node<T> oldLast = last;
-			Node first = getPrevious(last);
-			last = new Node<>(value, oldLast);
-			first.next = last;
+			oldLast.next = last;
 		}
 		n++;
 	}
 
-	private Node<T> getPrevious(Node<T> node) {
-		Node<T> first = node.next;
-		while (first.next != node) {
-			first = first.next;
-		}
-		return first;
-	}
-
 	@Override
 	public T dequeue() {
-		if (last == null) {
+		if (first == null) {
 			throw new NoSuchElementException();
 		}
-		Node<T> first = getPrevious(last);
-		Node<T> second = getPrevious(first);
 		T value = first.value;
-		second.next = last;
+		first = first.next;
 		n--;
-		if (n == 0) {
-			last = null;
-		}
 		return value;
 	}
 

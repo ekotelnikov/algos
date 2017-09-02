@@ -1,7 +1,7 @@
 package com.ek9v.algo.tests;
 
 
-import com.ek9v.algo.StackLinkedList;
+import com.ek9v.algo.adt.StackLinkedList;
 import edu.princeton.cs.algs4.StdIn;
 
 /**

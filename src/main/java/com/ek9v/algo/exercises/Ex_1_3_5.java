@@ -1,7 +1,7 @@
 package com.ek9v.algo.exercises;
 
-import com.ek9v.algo.FixedCapacityStack;
-import com.ek9v.algo.Stack;
+import com.ek9v.algo.adt.FixedCapacityStack;
+import com.ek9v.algo.adt.Stack;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
 
