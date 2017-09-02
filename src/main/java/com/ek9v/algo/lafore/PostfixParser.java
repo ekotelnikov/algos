@@ -1,84 +1,53 @@
 package com.ek9v.algo.lafore;
 
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-/**
- * Parser of arithm expression to postfix form.
- */
 public class PostfixParser {
-    private final String expression;
 
-    public PostfixParser(String exp) {
-        this.expression = exp;
+    public PostfixParser() {
     }
 
-    public String parse() {
-        StringBuilder outExpBuilder = new StringBuilder();
-        Stack<Character> opStack = new Stack<>();
-        char[] chars = expression.toCharArray();
-        for (char ch : chars) {
-            if (ch == '(') {
-                opStack.push(ch);
-            } else if (ch == ')') {
-                outExpBuilder.append(parseCloseBkt(opStack));
-            } else if (isOperator(ch)) {
-                outExpBuilder.append(parseOperator(opStack, ch));
-            } else {
-                outExpBuilder.append(ch);
-            }
-        }
-        while (!opStack.isEmpty()) {
-            outExpBuilder.append(opStack.pop());
-        }
+    public String parse(String expression) {
+        List<Character> chars = convertToList(expression);
 
-        return outExpBuilder.toString();
+        //TODO use stacks instead of list, take 2 digits and 1 operator
+        List<Character> digits = filterDigits(chars);
+        List<Character> operators = filterOperators(chars);
+        List<Character> parsed = joinLists(digits, operators);
+
+        Optional<String> parsedExp = convertToString(parsed);
+
+        return parsedExp.get();
     }
 
-    private String parseOperator(Stack<Character> opStack, char ch) {
-        StringBuilder out = new StringBuilder();
-        if (!opStack.isEmpty()) {
-            char prevOp = opStack.pop();
-            if (getPrior(prevOp) >= getPrior(ch)) {
-                out.append(prevOp);
-            } else {
-                opStack.push(prevOp);
-            }
-        }
-        opStack.push(ch);
-        return out.toString();
+    private Optional<String> convertToString(List<Character> parsed) {
+        return parsed.stream()
+                    .map(Object::toString)
+                    .reduce((acc, e) -> acc + e);
     }
 
-    private String parseCloseBkt(Stack<Character> opStack) {
-        StringBuilder out = new StringBuilder();
-        while (!opStack.isEmpty()) {
-            char c = opStack.pop();
-            if (c == '(') {
-                break;
-            } else {
-                out.append(c);
-            }
-        }
-        return out.toString();
+    private List<Character> joinLists(List<Character> digits, List<Character> operators) {
+        return Stream.concat(digits.stream(), operators.stream())
+                    .collect(Collectors.toList());
     }
 
-    private int getPrior(char ch) {
-        switch (ch) {
-            case '(' : return 0;
-            case '+' : return 1;
-            case '-' : return 1;
-            case '*' : return 2;
-            case '/' : return 2;
-            default: return 2;
-        }
+    private List<Character> filterOperators(List<Character> chars) {
+        return chars.stream()
+                    .filter(c -> !Character.isDigit(c))
+                    .collect(Collectors.toList());
     }
 
-    public static boolean isOperator(char ch) {
-        switch (ch) {
-            case '+' : return true;
-            case '-' : return true;
-            case '*' : return true;
-            case '/' : return true;
-            default: return false;
-        }
+    private List<Character> filterDigits(List<Character> chars) {
+        return chars.stream()
+                    .filter(Character::isDigit)
+                    .collect(Collectors.toList());
+    }
+
+    private List<Character> convertToList(String expression) {
+        return expression.chars()
+                    .mapToObj(c -> (char) c)
+                    .collect(Collectors.toList());
     }
 }

@@ -11,7 +11,7 @@ public class ArithmCalculator {
         Scanner sc = new Scanner(System.in);
         String exp = sc.nextLine();
 
-        PostfixParser parser = new PostfixParser(exp);
+        PostfixParserOld parser = new PostfixParserOld(exp);
         String parsedExp = parser.parse();
         PostfixCalc postfixCalc = new PostfixCalc(parsedExp);
         int result = postfixCalc.calculate();
