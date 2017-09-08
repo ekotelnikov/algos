@@ -72,7 +72,7 @@ public class CommonGraph<T extends Comparable> {
         return nodeList;
     }
 
-    public static class Node<T> {
+    static class Node<T> {
         private T value;
         private List<Node<T>> nodes = new ArrayList<>();
         private int s = -1;

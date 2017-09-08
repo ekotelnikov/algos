@@ -1,6 +1,6 @@
 package com.ek9v.algo.exercises;
 
-import com.ek9v.algo.adt.RecursiveTreeBST;
+import com.ek9v.algo.adt.tree.RecursiveTreeBST;
 import org.junit.Test;
 
 import java.util.Arrays;

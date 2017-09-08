@@ -1,23 +1,23 @@
-package com.ek9v.algo.adt;
+package com.ek9v.algo.adt.tree;
 
 /**
  * Created by user on 15.01.2017.
  */
 public class RecursiveTreeBST {
 
-	private Node root;
+	private Node<Integer> root;
 
 	public RecursiveTreeBST(int rootValue) {
-		root = new Node(rootValue);
+		root = new Node<>(rootValue);
 	}
 
 	public Node add(int value) {
 		return add(value, root);
 	}
 
-	private Node add(int value, Node node) {
+	private Node<Integer> add(int value, Node<Integer> node) {
 		if (node == null) {
-			return new Node(value);
+			return new Node<>(value);
 		} else if (value < node.value) {
 			node.left = add(value, node.left);
 		} else if (value > node.value){
@@ -41,8 +41,8 @@ public class RecursiveTreeBST {
 		return t;
 	}
 
-	public int distance(int value) {
-		Node node = root;
+	public int distance(Integer value) {
+		Node<Integer> node = root;
 		int dist = 0;
 		while (node != null) {
 			if (value < node.value) {
@@ -75,25 +75,4 @@ public class RecursiveTreeBST {
 		print(root.right);
 	}
 
-	public class Node {
-
-		private int value;
-		private Node left;
-		private Node right;
-
-		public Node(int value) {
-			this.value = value;
-		}
-
-		public int getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return "Node{" +
-					"value=" + value +
-					'}';
-		}
-	}
 }
