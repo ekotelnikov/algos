@@ -15,6 +15,9 @@ public class MergeLinkedListsTest {
     Node m = merge(n, p);
     LinkedListUtils.print(m);
     System.out.println();
+    Node a = recursiveMerge(n, p);
+    LinkedListUtils.print(a);
+    System.out.println();
 
     n = LinkedListUtils.createLinkedList(1);
     p = LinkedListUtils.createLinkedList(2);
@@ -29,6 +32,24 @@ public class MergeLinkedListsTest {
     m = merge(n, p);
     LinkedListUtils.print(m);
     System.out.println();
+  }
+
+  private Node recursiveMerge(Node a, Node b) {
+    if (a == null) {
+      return b;
+    }
+    if (b == null) {
+      return a;
+    }
+    Node result;
+    if (a.value <= b.value) {
+      result = a;
+      result.next = recursiveMerge(a.next, b);
+    } else {
+      result = b;
+      result.next = recursiveMerge(a, b.next);
+    }
+    return result;
   }
 
   private Node merge(Node n, Node p) {
